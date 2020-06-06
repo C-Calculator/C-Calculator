@@ -227,9 +227,9 @@ void prime (double *ops, int lops)
 
 int main () {
 	void (*calc_function[]) (double *ops, int lops) = { add, subtract, multiply,
-														divide, exponent, root,
-														sine, cosine, weight,
-														temp, dtob, btod, prime };
+							   divide, exponent, root,
+							   sine, cosine, weight,
+							   temp, dtob, btod, prime };
 	
 	int b, choice = -1;
 	double (c[MAX_OPS]);
