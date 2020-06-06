@@ -1,6 +1,6 @@
 # C-Calculator
 @furvy04's calculator project
-@M         translator
+@MGislv's translator
 
   **To Do list:**
 * Improve translation
