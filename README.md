@@ -1,5 +1,5 @@
 # C-Calculator
-@furvy04's calculator project
+@furvy04's Calculator project
 
 @MGislv's translator
 
