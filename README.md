@@ -3,7 +3,7 @@
 
 @MGislv's translator
 
-HUGE thanks to @UsedOnlyTwice for his advice and support
+**HUGE** thanks to @UsedOnlyTwice for his advice and support
 
   **To Do list:**
 * Improve translation
