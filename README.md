@@ -1,9 +1,9 @@
 # C-Calculator
-@furvy04's Calculator project
+**@furvy04**'s Calculator project
 
-@MGislv's translator
+**@MGislv**'s translator
 
-**HUGE** thanks to @UsedOnlyTwice for his advice and support
+**HUGE** thanks to **@UsedOnlyTwice** for his advice and support
 
   **To Do list:**
 * Improve translation
