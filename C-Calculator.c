@@ -178,11 +178,8 @@ void btod (double *ops, int lops) {
 }
 
 void prime (double *ops, int lops) {
-	int h, i, l;
-	for(i = 0; i < lops; i++) {
-		int m, div = 2;
-		h = 0;
-		l = 0;
+	for(int i = 0; i < lops; i++) {
+		int m, div = 2, h = 0, l = 0;
 		m = (int) ops[i];
 		
 		if (first (m, div) == 1) {
@@ -202,18 +199,16 @@ void prime (double *ops, int lops) {
 				  else {
 					  printf("%d ^ %d *", div, h);
 				  }
-				  }
-				  
-				  h = 0;
+			 }
+			 	  h = 0;
 				  div++;
 			 }
-	}
-	
-	if (l == 0) {
-		printf("\nPrime factorization of the number %.0lf is: %d ^ %d ", ops[i], div, h);
-	}
-	else {
-		printf(" %d ^ %d", div, h);
+		if (l == 0) {
+			printf("\nPrime factorization of the number %.0lf is: %d ^ %d ", ops[i], div, h);
+		}
+		else {
+			printf(" %d ^ %d", div, h);
+		}
 	}
 }
 
