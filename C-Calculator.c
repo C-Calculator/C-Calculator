@@ -7,15 +7,16 @@
 #define CLEAR "\e[1;1H\e[2J"  //  ANSI code used to wipe output
 #define MAX_OPS 50  //  Maximum number of operators
 
-int first (int m, int div)
-{
-	while ((m / div) != 1)
-	{
-		if (m % div == 0 || m == 1)
+int first (int m, int div) {
+	while ((m / div) != 1) {
+		if (m % div == 0 || m == 1) {
 			return 0;
-		else if (m % div != 0)
+		}
+		else if (m % div != 0) {
 			div++;
+		}
 	}
+	
 	return 1;
 }
 
@@ -83,7 +84,7 @@ void exponent (double *ops, int lops) {
 	scanf ("%lf", & expo);
 	
 	for (int i = 0; i < lops; i++) {
-		printf ("\nExponentiation of %lf is: %lf", ops[i], pow (ops[i], expo));
+		printf ( "\nExponentiation of %lf is: %lf", ops[i], pow (ops[i], expo) );
 	}
 }
 
@@ -95,7 +96,7 @@ void root (double *ops, int lops) {
 	expo = 1 / expo;
 	
 	for (int i = 0; i < lops; i++) {
-		printf ("\nRoot of %lf is: %lf", ops[i], pow (ops[i], expo));
+		printf ( "\nRoot of %lf is: %lf", ops[i], pow (ops[i], expo) );
 	}
 }
 
@@ -104,7 +105,7 @@ void sine (double *ops, int lops) {
 	
 	for (int i = 0; i < lops; i++) {
 		a = ops[i] * 2 * M_PI / 360.0;  //  Converting in radiants M_PI=3.14
-		printf ("\nSine of %lf is: %lf", ops[i], sin (a));
+		printf ( "\nSine of %lf is: %lf", ops[i], sin (a) );
 	}
 }
 
@@ -113,7 +114,7 @@ void cosine (double *ops, int lops) {
 	
 	for (int i = 0; i < lops; i++) {
 		a = ops[1] * 2 * M_PI / 360.0;
-		printf ("\nCosine of %lf is: %lf", ops[i], cos (a));
+		printf ( "\nCosine of %lf is: %lf", ops[i], cos (a) );
 	}
 }
 
@@ -159,84 +160,77 @@ void btod (double *ops, int lops) {
 	
 	printf ("Insert the base of the number: ");
 	scanf ("%d", & bas);
-
+	
 	for (int i = 0; i < lops; i++) {
-		int d = 0,k;
+		int d = 0, k;
 		k = (int) ops[i];
+		
 		for (int c = 0; k > 0; c++) {
 			if (k % 10 != 0) {
 				d += pow (bas, c);
-			}	
-			k /= 10;
+			}
+		
+		k /= 10;
 		}
 		
 		printf ("\nThe converted number %.0lf in decimals is: %d", ops[i], d);
 	}
 }
 
-void prime (double *ops, int lops) 
-{
-	for(int i=0; i < lops; i++)
-	{   
-		int m,div=2,h=0,l=0;
+void prime (double *ops, int lops) {
+	int h, i, l;
+	for(i = 0; i < lops; i++) {
+		int m, div = 2;
+		h = 0;
+		l = 0;
 		m = (int) ops[i];
 		
-			if(first(m,div) == 1)
-			{
-				printf("\nThe number %.0lf is prime", ops[i]);
-					   
-			}	
-			else 
-			{   
-                while (m != 1)
-                {   
-					if (m%div == 0)
-					{   
-						m /= div;
-						h++;
-				    }
-				   else 
-				   {  
-						if (h != 0)
-						{   
-							l++;
-							if(l == 1)
-							{
-								printf("\nPrime factorization of the number %.0lf is: %d ^ %d *", ops[i], div, h);
-							}	
-							else
-							{
-								printf(" %d ^ %d *", div, h);
-							}	
-						}		    
-						h=0;
-						div++;
-				   }	
-				}
-				if(l == 0)
-				{
-					printf("\nPrime factorization of the number %.0lf is: %d ^ %d ", ops[i], div, h);	    
-				}
-				else
-				{
-					printf(" %d ^ %d", div, h);
-				}
-			}
+		if (first (m, div) == 1) {
+			printf("\nThe number %.0lf is prime", ops[i]);
+		}
+		else while (m != 1) {
+			 if (m % div == 0) {
+				 m /= div;
+				 h++;
+			 }
+			 else if (h != 0) {
+				  l++;
+				  
+				  if (l == 1) {
+					  printf("\nPrime factorization of the number %.0lf is: %d ^ %d *", ops[i], div, h);
+				  }
+				  else {
+					  printf("%d ^ %d *", div, h);
+				  }
+				  }
+				  
+				  h = 0;
+				  div++;
+			 }
+	}
+	
+	if (l == 0) {
+		printf("\nPrime factorization of the number %.0lf is: %d ^ %d ", ops[i], div, h);
+	}
+	else {
+		printf(" %d ^ %d", div, h);
 	}
 }
 
 int main () {
 	void (*calc_function[]) (double *ops, int lops) = { add, subtract, multiply,
-							   divide, exponent, root,
-							   sine, cosine, weight,
-							   temp, dtob, btod, prime };
-	
+														divide, exponent, root,
+														sine, cosine, weight,
+														temp, dtob, btod, prime };
+
 	int b, choice = -1;
 	double (c[MAX_OPS]);
 	
 	printf ("Specify the number of operators (Max %d): ", MAX_OPS);
 	scanf ("%d", & b);
+	
 	printf (CLEAR);
+	
 	printf ("Insert the numbers: \n");
 	
 	for (int i = 0; i < b; i++) {
@@ -259,13 +253,12 @@ int main () {
 		
 		scanf ("%d", &choice);
 		
-		if (choice <= 0 || choice > 13)
-		{
-		    exit(0);
+		if (choice <= 0 || choice > 13) {
+			exit (0);
 		}
-		
 		else {
 			printf (CLEAR);
+			
 			calc_function[choice - 1] (c, b);
 		}
 	}
