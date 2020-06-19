@@ -8,4 +8,5 @@
   **To Do list:**
 * Improve translation
 * Clean, simplify and optimize code
+* Add comments
 * *Maybe* implement new features
