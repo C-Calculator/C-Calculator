@@ -1,7 +1,7 @@
 # C-Calculator
 **@furvy04**'s Calculator project
 
-**@MGislv**'s translator
+**@MGislv** translator
 
 **HUGE** thanks to **@UsedOnlyTwice** for his advice and support
 
@@ -10,3 +10,5 @@
 * Clean, simplify and optimize code
 * Add comments
 * *Maybe* implement new features
+
+Binaries are available in the **Release** page
