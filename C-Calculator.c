@@ -18,6 +18,7 @@ int first (int m, int div) {
 			}
 		}
 	}
+
 	return 1;
 }
 
