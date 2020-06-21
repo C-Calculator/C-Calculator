@@ -75,7 +75,6 @@ void divide (double *ops, int lops) {
 	for (i = 0; i < lops; i++) {
 		if (ops[i] == 0) {
 			printf ("The division is impossible");
-			h = 0;
 			break;
 		}
 		else {
@@ -87,9 +86,7 @@ void divide (double *ops, int lops) {
 			}
 		}
 		
-		if (h != 0) {
-			printf ("Division's result is: %lf", h);
-		}
+		printf ("Division's result is: %lf", h);
 	}
 }
 
