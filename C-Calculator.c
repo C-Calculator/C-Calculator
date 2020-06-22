@@ -18,7 +18,6 @@ int first (int m, int div) {
 			}
 		}
 	}
-
 	return 1;
 }
 
@@ -69,25 +68,28 @@ void divide (double *ops, int lops) {
 	int i;
 	
 	if (lops == 1) {
-		printf ("It's impossible to divide with only one value");
-	}	
-	
-	for (i = 0; i < lops; i++) {
-		if (ops[i] == 0) {
-			printf ("The division is impossible");
-			break;
-		}
-		else {
-			if (i == 0) {
-				h = ops[i];
+		printf("It's impossible to divide with only one value");
+	}
+	else {
+		for (i = 0; i < lops; i++) {
+			if (ops[i] == 0 && i != 0) {
+				printf("The division is impossible");
+				break;
 			}
 			else {
-				h /= ops[i];
+				if (i == 0) {
+					h = ops[i];
+				}
+				else {
+					h /= ops[i];
+				}
 			}
+			
+			if (i == lops - 1) {
+				printf("Division's result is: %lf", h);	
+			}	
 		}
-		
-		printf ("Division's result is: %lf", h);
-	}
+	}	
 }
 
 void exponent (double *ops, int lops) {
@@ -213,7 +215,7 @@ void prime (double *ops, int lops) {
 						if (h != 0) {
 							l++;
 							
-							if (l == 1) {
+							if(l == 1) {
 								printf("\nPrime factorization of the number %.0lf is: %d ^ %d *", ops[i], div, h);
 							}
 							else {
@@ -221,7 +223,7 @@ void prime (double *ops, int lops) {
 							}
 						}
 						
-						h = 0;
+						h=0;
 						div++;
 					}
 				}
