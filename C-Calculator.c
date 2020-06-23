@@ -128,9 +128,30 @@ void cosine (double *ops, int lops) {
 	double a;
 	
 	for (int i = 0; i < lops; i++) {
-		a = ops[1] * 2 * M_PI / 360.0;
+		a = ops[i] * 2 * M_PI / 360.0;
 		printf ( "\nCosine of %lf is: %lf", ops[i], cos (a) );
 	}
+}
+
+void tang (double *ops, int lops) {
+	double a;
+	
+	for (int i = 0; i < lops; i++) {
+		a = ops[i] * 2 * M_PI / 360.0;
+		printf("\nTangent of %lf is: %lf", ops[i], tan (a) );
+	}
+}
+
+void loga (double *ops, int lops) {
+	for (int i = 0; i < lops; i++) {
+		printf("\nLogarithm of %lf is: %lf", ops[i], log10 ( ops[i] ) );
+	}	
+}
+
+void ln (double *ops, int lops) {
+	for (int i = 0; i < lops; i++) {
+		printf("\nNatural logarithm of %lf is: %lf", ops[i], log ( ops[i] ) );
+	}	
 }
 
 void weight (double *ops, int lops) {
@@ -242,8 +263,9 @@ void prime (double *ops, int lops) {
 int main () {
 	void (*calc_function[]) (double *ops, int lops) = { add, subtract, multiply,
 														divide, exponent, root,
-														sine, cosine, weight,
-														temp, dtob, btod, prime };
+														sine, cosine,tang,loga,
+														ln,weight,temp,dtob, 
+														btod,prime };
 	
 	int b, choice = -1;
 	double (c[MAX_OPS]);
@@ -270,16 +292,17 @@ int main () {
 		printf("\nWhich operation you want to do?\n");
 		printf("    (1) Sum/Average      (2) Subtraction      (3) Multiplication      (4) Division\n");
 		printf("    (5) Exponentiation   (6) Roots            (7) Sine                (8) Cosine\n");
-		printf("    (9) Weight\n");
+		printf("    (9) Tangent         (10) Logarithm       (11) Natural logarithm\n");
 		printf("\nConversion\n");
-		printf("    (10) Celsius Degrees to Kelvin or Fahrenheit\n");
-		printf("    (11) Conversion from binaries to decimals\n");
-		printf("    (12) Conversion from decimals to binaries\n");
-		printf("    (13) Prime factorization of the numbers\n");
-		
+		printf("    (12) Conversion from Kilograms to Weight\n");
+		printf("    (13) Celsius Degrees to Kelvin or Fahrenheit\n");
+		printf("    (14) Conversion from binaries to decimals\n");
+		printf("    (15) Conversion from decimals to binaries\n");
+		printf("    (16) Prime factorization of the numbers\n");
+	
 		scanf ("%d", & choice);
 		
-		if (choice <= 0 || choice > 13) {
+		if (choice <= 0 || choice > 16) {
 			exit (0);
 		}
 		else {
