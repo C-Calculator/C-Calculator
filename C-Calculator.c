@@ -4,9 +4,10 @@
 #include <string.h>
 
 #define N 9.80665
-#define CLEAR "\e[1;1H\e[2J"  //  ANSI code used to wipe output
-#define MAX_OPS 50  //  Maximum number of operators
+#define CLEAR "\e[1;1H\e[2J" /* ANSI code used to wipe output */
+#define MAX_OPS 50 /* Maximum number of operators */
 
+/* Part of prime function */
 int first (int m, int div) {
 	while ( (m / div) != 1 ) {
 		if (m % div == 0 || m == 1) {
@@ -18,6 +19,7 @@ int first (int m, int div) {
 			}
 		}
 	}
+	
 	return 1;
 }
 
@@ -72,6 +74,7 @@ void divide (double *ops, int lops) {
 	}
 	else {
 		for (i = 0; i < lops; i++) {
+			/* Checks input */
 			if (ops[i] == 0 && i != 0) {
 				printf("The division is impossible");
 				break;
@@ -86,10 +89,10 @@ void divide (double *ops, int lops) {
 			}
 			
 			if (i == lops - 1) {
-				printf("Division's result is: %lf", h);	
-			}	
+				printf("Division's result is: %lf", h);
+			}
 		}
-	}	
+	}
 }
 
 void exponent (double *ops, int lops) {
@@ -133,24 +136,27 @@ void cosine (double *ops, int lops) {
 	}
 }
 
+/* Tangent */
 void tang (double *ops, int lops) {
 	double a;
 	
 	for (int i = 0; i < lops; i++) {
 		a = ops[i] * 2 * M_PI / 360.0;
-		printf("\nTangent of %lf is: %lf", ops[i], tan (a) );
+		printf( "\nTangent of %lf is: %lf", ops[i], tan (a) );
 	}
 }
 
+/* Logarithm */
 void loga (double *ops, int lops) {
 	for (int i = 0; i < lops; i++) {
-		printf("\nLogarithm of %lf is: %lf", ops[i], log10 ( ops[i] ) );
+		printf( "\nLogarithm of %lf is: %lf", ops[i], log (ops[i]) );
 	}	
 }
 
-void ln (double *ops, int lops) {
+/* Natural logarithm */
+void nl (double *ops, int lops) {
 	for (int i = 0; i < lops; i++) {
-		printf("\nNatural logarithm of %lf is: %lf", ops[i], log ( ops[i] ) );
+		printf( "\nNatural logarithm of %lf is: %lf", ops[i], log (ops[i]) );
 	}	
 }
 
@@ -160,6 +166,7 @@ void weight (double *ops, int lops) {
 	}
 }
 
+/* Conversion from Celsius to Fahrenheit or Kelvin */
 void temp (double *ops, int lops) {
 	for (int i = 0; i < lops; i++) {
 		printf ("\nConversion in °F of %lf is: %lf", ops[i], ops[i] * 1.800 + 32.00);
@@ -167,14 +174,16 @@ void temp (double *ops, int lops) {
 	}
 }
 
+/* Decimals to binary */
 void dtob (double *ops, int lops) {
 	int bas, m;
 	
 	printf ("Insert the base: ");
 	scanf ("%d", & bas);
 	
+	/*  Converting to integer */
 	for (int i = 0; i < lops; i++) {
-		m = (int) ops[i];  //  Converting to integer
+		m = (int) ops[i];
 		int r[10], h = 0, k;
 		
 		do {
@@ -191,6 +200,7 @@ void dtob (double *ops, int lops) {
 	}
 }
 
+/* Binary to decimals */
 void btod (double *ops, int lops) {
 	int bas;
 	
@@ -213,10 +223,12 @@ void btod (double *ops, int lops) {
 	}
 }
 
+/* Prime factorization */
 void prime (double *ops, int lops) {
 	for (int i = 0; i < lops; i++) {
 		int m, div = 2, h = 0, l = 0;
 		
+		/* Checks input */
 		if (ops[i] == 0) {
 			printf ("\nIt's impossible to do prime factorization on zero");
 		}
@@ -244,7 +256,7 @@ void prime (double *ops, int lops) {
 							}
 						}
 						
-						h=0;
+						h = 0;
 						div++;
 					}
 				}
@@ -263,10 +275,9 @@ void prime (double *ops, int lops) {
 int main () {
 	void (*calc_function[]) (double *ops, int lops) = { add, subtract, multiply,
 														divide, exponent, root,
-														sine, cosine,tang,loga,
-														ln,weight,temp,dtob, 
-														btod,prime };
-	
+														sine, cosine, tang, loga,
+														nl, weight, temp, dtob,
+														btod, prime };
 	int b, choice = -1;
 	double (c[MAX_OPS]);
 	
@@ -278,7 +289,6 @@ int main () {
 	}
 	
 	printf (CLEAR);
-	
 	printf ("Insert the numbers: \n");
 	
 	for (int i = 0; i < b; i++) {
@@ -293,13 +303,13 @@ int main () {
 		printf("    (1) Sum/Average      (2) Subtraction      (3) Multiplication      (4) Division\n");
 		printf("    (5) Exponentiation   (6) Roots            (7) Sine                (8) Cosine\n");
 		printf("    (9) Tangent         (10) Logarithm       (11) Natural logarithm\n");
-		printf("\nConversion\n");
+		printf("\nConversions\n");
 		printf("    (12) Conversion from Kilograms to Weight\n");
 		printf("    (13) Celsius Degrees to Kelvin or Fahrenheit\n");
 		printf("    (14) Conversion from binaries to decimals\n");
 		printf("    (15) Conversion from decimals to binaries\n");
 		printf("    (16) Prime factorization of the numbers\n");
-	
+		
 		scanf ("%d", & choice);
 		
 		if (choice <= 0 || choice > 16) {
@@ -307,7 +317,6 @@ int main () {
 		}
 		else {
 			printf (CLEAR);
-			
 			calc_function[choice - 1] (c, b);
 		}
 	}
