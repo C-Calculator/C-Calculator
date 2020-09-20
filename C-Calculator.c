@@ -7,9 +7,8 @@
 #define CLEAR "\e[1;1H\e[2J" /* ANSI code used to wipe output */
 #define MAX_OPS 50 /* Maximum number of operators */
 
-/* Part of prime function */
 int first (int m, int div) {
-	while ( (m / div) != 1 ) {
+	while ((m / div) != 1) {
 		if (m % div == 0 || m == 1) {
 			return 0;
 		}
@@ -23,20 +22,20 @@ int first (int m, int div) {
 	return 1;
 }
 
-void add (double *ops, int lops) {
-	double h = 0.0;
+void add (long double *ops, int lops) {
+	long double h = 0.00;
 	int i = 0;
 	
 	for (; i < lops; i++) {
 		h += ops[i];
 	}
 	
-	printf ("Sum's result is: %lf", h);
-	printf ("\nAverage's result is: %lf", h / i);
+	printf ("Sum's result is: %Lf", h);
+	printf ("\nAverage's result is: %Lf", h / i);
 }
 
-void subtract (double *ops, int lops) {
-	double h = 0.0;
+void subtract (long double *ops, int lops) {
+	long double h = 0.00;
 	
 	for (int i = 0; i < lops; i++) {
 		if (i == 0) {
@@ -47,11 +46,11 @@ void subtract (double *ops, int lops) {
 		}
 	}
 	
-	printf ("Subtraction's result is: %lf", h);
+	printf ("Subtraction's result is: %Lf", h);
 }
 
-void multiply (double *ops, int lops) {
-	double h = 0.0;
+void multiply (long double *ops, int lops) {
+	long double h = 0.00;
 	
 	for (int i = 0; i < lops ; i++) {
 		if (i == 0) {
@@ -62,21 +61,21 @@ void multiply (double *ops, int lops) {
 		}
 	}
 	
-	printf ("Multiplication's result is: %lf", h);
+	printf ("Multiplication's result is: %Lf", h);
 }
 
-void divide (double *ops, int lops) {
-	double h = 0.0;
+void divide (long double *ops, int lops) {
+	long double h = 0.00;
 	int i;
 	
 	if (lops == 1) {
-		printf("It's impossible to divide with only one value");
+		printf ("It's impossible to divide with only one value");
 	}
 	else {
 		for (i = 0; i < lops; i++) {
 			/* Checks input */
 			if (ops[i] == 0 && i != 0) {
-				printf("The division is impossible");
+				printf ("The division is impossible");
 				break;
 			}
 			else {
@@ -89,93 +88,90 @@ void divide (double *ops, int lops) {
 			}
 			
 			if (i == lops - 1) {
-				printf("Division's result is: %lf", h);
+				printf ("Division's result is: %Lf", h);
 			}
 		}
 	}
 }
 
-void exponent (double *ops, int lops) {
-	double expo;
+void exponent (long double *ops, int lops) {
+	long double expo = 0.00;
 	
 	printf ("\nInsert exponentiation value: ");
-	scanf ("%lf", & expo);
+	scanf ("%Lf", & expo);
 	
 	for (int i = 0; i < lops; i++) {
-		printf ( "\nExponentiation of %lf is: %lf", ops[i], pow (ops[i], expo) );
+		printf ("\nExponentiation of %Lf is: %Lf", ops[i], powl (ops[i], expo));
 	}
 }
 
-void root (double *ops, int lops) {
-	double expo;
+void root (long double *ops, int lops) {
+	long double expo = 0.00;
 	
 	printf ("\nRoot type: ");
-	scanf ("%lf", & expo);
+	scanf ("%Lf", & expo);
 	expo = 1 / expo;
 	
 	for (int i = 0; i < lops; i++) {
-		printf ( "\nRoot of %lf is: %lf", ops[i], pow (ops[i], expo) );
+		printf ("\nRoot of %Lf is: %Lf", ops[i], powl (ops[i], expo));
 	}
 }
 
-void sine (double *ops, int lops) {
-	double a;
+void sine (long double *ops, int lops) {
+	long double a = 0.00;
 	
 	for (int i = 0; i < lops; i++) {
-		a = ops[i] * 2 * M_PI / 360.0;  //  Converting in radiants M_PI=3.14
-		printf ( "\nSine of %lf is: %lf", ops[i], sin (a) );
+		a = ops[i] * 2 * M_PI / 360; /* Converting in radiants M_PI = 3.14 */
+		printf ("\nSine of %Lf is: %Lf", ops[i], sinl (a));
 	}
 }
 
-void cosine (double *ops, int lops) {
-	double a;
+void cosine (long double *ops, int lops) {
+	long double a = 0.00;
 	
 	for (int i = 0; i < lops; i++) {
-		a = ops[i] * 2 * M_PI / 360.0;
-		printf ( "\nCosine of %lf is: %lf", ops[i], cos (a) );
+		a = ops[i] * 2 * M_PI / 360;
+		printf ("\nCosine of %Lf is: %Lf", ops[i], cosl (a));
 	}
 }
 
-/* Tangent */
-void tang (double *ops, int lops) {
-	double a;
+void tang (long double *ops, int lops) {
+	long double a = 0.00;
 	
 	for (int i = 0; i < lops; i++) {
-		a = ops[i] * 2 * M_PI / 360.0;
-		printf( "\nTangent of %lf is: %lf", ops[i], tan (a) );
+		a = ops[i] * 2 * M_PI / 360;
+		printf ("\nTangent of %Lf is: %Lf", ops[i], tanl (a));
 	}
 }
 
-/* Logarithm */
-void loga (double *ops, int lops) {
+void loga (long double *ops, int lops) {
 	for (int i = 0; i < lops; i++) {
-		printf( "\nLogarithm of %lf is: %lf", ops[i], log (ops[i]) );
-	}	
+		printf ("\nLogarithm of %Lf is: %Lf", ops[i], logl (ops[i]));
+	}
 }
 
-/* Natural logarithm */
-void nl (double *ops, int lops) {
+void nl (long double *ops, int lops) {
 	for (int i = 0; i < lops; i++) {
-		printf( "\nNatural logarithm of %lf is: %lf", ops[i], log (ops[i]) );
-	}	
+		printf ("\nNatural logarithm of %Lf is: %Lf", ops[i], logl (ops[i]));
+	}
 }
 
-void weight (double *ops, int lops) {
+void weight (long double *ops, int lops) {
 	for (int i = 0; i < lops; i++) {
-		printf ("\nWeight of %lf is: %lf", ops[i], ops[i] * N);
+		printf ("\nWeight of %Lf is: %Lf", ops[i], ops[i] * N);
 	}
 }
 
 /* Conversion from Celsius to Fahrenheit or Kelvin */
-void temp (double *ops, int lops) {
+void temp (long double *ops, int lops) {
 	for (int i = 0; i < lops; i++) {
-		printf ("\nConversion in °F of %lf is: %lf", ops[i], ops[i] * 1.800 + 32.00);
-		printf ("\nConversion in °K of %lf is: %lf", ops[i], ops[i] + 273.15);
+		printf ("\nConversion in °F of %Lf is: %Lf", ops[i], ops[i] * 1.8 + 32);
+		printf ("\nConversion in °K of %Lf is: %Lf", ops[i], ops[i] + 273.15);
 	}
 }
 
 /* Decimals to binary */
-void dtob (double *ops, int lops) {
+void dtob (long double *ops, int lops) {
 	int bas, m;
 	
 	printf ("Insert the base: ");
@@ -183,8 +179,8 @@ void dtob (double *ops, int lops) {
 	
 	/*  Converting to integer */
 	for (int i = 0; i < lops; i++) {
-		m = (int) ops[i];
 		int r[10], h = 0, k;
+		m = (int) ops[i];
 		
 		do {
 			r[h] = m % bas;
@@ -192,7 +188,7 @@ void dtob (double *ops, int lops) {
 			m /= bas;
 		} while (m != 0);
 		
-		printf ("\nThe converted number %lf in base %d is: ", ops[i], bas);
+		printf ("\nThe converted number %Lf in base %d is: ", ops[i], bas);
 		
 		for (k = h - 1; k >= 0; k--) {
 			printf ("%d", r[k]);
@@ -201,7 +197,7 @@ void dtob (double *ops, int lops) {
 }
 
 /* Binary to decimals */
-void btod (double *ops, int lops) {
+void btod (long double *ops, int lops) {
 	int bas;
 	
 	printf ("\nInsert the base of the number: ");
@@ -219,24 +215,24 @@ void btod (double *ops, int lops) {
 			k /= 10;
 		}
 		
-		printf ("\nThe converted number %.0lf in decimals is: %d", ops[i], d);
+		printf ("\nThe converted number %Lf in decimals is: %d", ops[i], d);
 	}
 }
 
 /* Prime factorization */
-void prime (double *ops, int lops) {
+void prime (long double *ops, int lops) {
 	for (int i = 0; i < lops; i++) {
 		int m, div = 2, h = 0, l = 0;
 		
-		/* Checks input */
 		if (ops[i] == 0) {
 			printf ("\nIt's impossible to do prime factorization on zero");
 		}
+		
 		else {
 			m = (int) ops[i];
 			
 			if (first (m, div) == 1) {
-				printf("\nThe number %.0lf is prime", ops[i]);
+				printf("\nThe number %Lf is prime", ops[i]);
 			}
 			else {
 				while (m != 1) {
@@ -248,11 +244,11 @@ void prime (double *ops, int lops) {
 						if (h != 0) {
 							l++;
 							
-							if(l == 1) {
-								printf("\nPrime factorization of the number %.0lf is: %d ^ %d *", ops[i], div, h);
+							if (l == 1) {
+								printf ("\nPrime factorization of the number %Lf is: %d ^ %d *", ops[i], div, h);
 							}
 							else {
-								printf("%d ^ %d *", div, h);
+								printf ("%d ^ %d *", div, h);
 							}
 						}
 						
@@ -262,10 +258,10 @@ void prime (double *ops, int lops) {
 				}
 				
 				if (l == 0) {
-					printf("\nPrime factorization of the number %.0lf is: %d ^ %d ", ops[i], div, h);
+					printf ("\nPrime factorization of the number %Lf is: %d ^ %d ", ops[i], div, h);
 				}
 				else {
-					printf("%d ^ %d", div, h);
+					printf ("%d ^ %d", div, h);
 				}
 			}
 		}
@@ -273,18 +269,18 @@ void prime (double *ops, int lops) {
 }
 
 int main () {
-	void (*calc_function[]) (double *ops, int lops) = { add, subtract, multiply,
-														divide, exponent, root,
-														sine, cosine, tang, loga,
-														nl, weight, temp, dtob,
-														btod, prime };
-	int b, choice = -1;
-	double (c[MAX_OPS]);
+	void (*calc_function[]) (long double *ops, int lops) = { add, subtract, multiply,
+															 divide, exponent, root,
+															 sine, cosine, tang, loga,
+															 nl, weight, temp, dtob,
+															 btod, prime };
+	int b, choice;
+	long double c[MAX_OPS];
 	
 	printf ("Specify the number of operators (Max %d): ", MAX_OPS);
 	scanf ("%d", & b);
 	
-	if (b <= 0) {
+	if (b <= 0 || b > MAX_OPS) {
 		exit (0);
 	}
 	
@@ -292,12 +288,12 @@ int main () {
 	printf ("Insert the numbers: \n");
 	
 	for (int i = 0; i < b; i++) {
-		scanf ("%lf", & c[i]);
+		scanf ("%Lf", & c[i]);
 	}
 	
 	printf (CLEAR);
 	
-	while (1 != 0) {
+	while (0 == 0) {
 		printf("\n");
 		printf("\nWhich operation you want to do?\n");
 		printf("    (1) Sum/Average      (2) Subtraction      (3) Multiplication      (4) Division\n");
