@@ -300,7 +300,7 @@ int main()
 		if (choice <= 0 || choice > 16) {
 			exit (0);
 		} else {
-			printf (CLEAR);
+			printf(CLEAR);
 			calc_function[choice - 1](c, b);
 		}
 	}
