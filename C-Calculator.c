@@ -168,7 +168,7 @@ void temp(long double *ops, int lops)
 }
 
 /* Decimals to binary */
-void dtob (long double *ops, int lops)
+void dtob(long double *ops, int lops)
 {
 	int bas, m;
 
@@ -217,7 +217,7 @@ void btod(long double *ops, int lops)
 }
 
 /* Prime factorization */
-void prime (long double *ops, int lops)
+void prime(long double *ops, int lops)
 {
 	for (int i = 0; i < lops; i++) {
 		int m, div = 2, h = 0, l = 0;
