@@ -51,7 +51,7 @@ void multiply(long double *ops, int lops)
 {
 	long double h = 0.00;
 
-	for (int i = 0; i < lops ; i++) {
+	for (int i = 0; i < lops; i++) {
 		if (i == 0) {
 			h = ops[i];
 		} else {
@@ -266,19 +266,18 @@ int main()
 								nl, weight, temp, dtob,
 								btod, prime };
 
-	int b, choice;
+	int nops, choice;
 	long double c[MAX_OPS];
 
-	printf("Specify the number of operators (Max %d): ", MAX_OPS);
-	scanf("%d", &b);
-
-	if (b <= 0 || b > MAX_OPS)
-		exit (0);
+	do {
+		printf("Specify the number of operators (Max %d): ", MAX_OPS);
+		scanf("%d", &nops);
+	} while (nops < 1 || nops > MAX_OPS);
 
 	printf(CLEAR);
 	printf("Insert the numbers: \n");
 
-	for (int i = 0; i < b; i++)
+	for (int i = 0; i < nops; i++)
 		scanf("%Lf", &c[i]);
 
 	printf(CLEAR);
@@ -301,7 +300,7 @@ int main()
 			exit (0);
 		} else {
 			printf(CLEAR);
-			calc_function[choice - 1](c, b);
+			calc_function[choice - 1](c, nops);
 		}
 	}
 }
